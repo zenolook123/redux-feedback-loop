@@ -7,6 +7,7 @@ import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding'
 import Support from '../Support/Support'
 import Comments from '../Comments/Comments'
+import Submit from '../Submit/Submit.jsx'
 
 
 import { HashRouter as Router, Route } from 'react-router-dom/cjs/react-router-dom';
@@ -16,8 +17,15 @@ import { useDispatch } from 'react-redux';
 
 function App() {
 
-  axios.get('/').then(response => {
+  const dispatch = useDispatch()
+
+  axios.get('/feedback').then(response => {
     console.log('response is', response.data)
+    dispatch({
+      type:"SET_FEEDBACK",
+      payload:response.data
+    })
+    
 }).catch(err => {
     console.log("error in get index", err)
 })
@@ -41,6 +49,10 @@ function App() {
 
       <Route exact path = '/comments'>
       <Comments />
+      </Route>
+
+      <Route exact path = '/submit'>
+      <Submit />
       </Route>
 
     </div>

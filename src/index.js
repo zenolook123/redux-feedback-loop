@@ -3,21 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App/App';
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger'
 
-const currentFeedback = (state = [], action) => {
-return state
-}
-
-
+import {combineReducers as Reducers} from './reducers/reducers'
 
 const storeInstance = createStore(
-    combineReducers({
-   currentFeedback
-    }),
-    applyMiddleware(logger)
+    Reducers,applyMiddleware(logger)
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

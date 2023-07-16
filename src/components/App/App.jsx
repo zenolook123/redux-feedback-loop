@@ -35,7 +35,7 @@ function App() {
     <div className='App'>
       <NavBar />
 
-      <Route exact path = '/feeling'>
+      <Route exact path = '/'>
       <Feeling />
       </Route>
 

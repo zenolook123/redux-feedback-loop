@@ -1,17 +1,20 @@
 import { TextField, Button } from "@mui/material"
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function Comments() {
 
-
+const dispatch = useDispatch()
+const history = useHistory()
     const [commentsValue, setCommentsValue] = useState("");
 
     const handleTextChange = (event) => {
         setCommentsValue(event.target.value)
     }
 
-    const commentsObject = [{
+    const commentsObject = {
         comments:commentsValue
-    }]
+    }
 
 
     function commentsPush() {
@@ -20,7 +23,7 @@ function Comments() {
             payload: commentsObject
         })
 
-        history.push("/comments")
+        history.push("/submit")
       }
 
 

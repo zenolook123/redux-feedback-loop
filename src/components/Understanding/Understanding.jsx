@@ -15,9 +15,9 @@ function Understanding() {
         setUnderstanding(event.target.value)
     }
 
-    const understandingObject = [{
+    const understandingObject = {
         understanding: understandingValue
-    }]
+    }
 
 
     function understandingPush() {
@@ -26,7 +26,7 @@ function Understanding() {
             payload: understandingObject
         })
 
-        history.push("/understanding")
+        history.push("/support")
 
     }
 

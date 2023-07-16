@@ -7,10 +7,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger'
 
-import combinedReducers from './reducers/reducerCombine'
+import reducerCombine from './reducers/reducerCombine'
 
 const storeInstance = createStore(
-    combinedReducers,applyMiddleware(logger)
+    reducerCombine,
+    applyMiddleware(logger)
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -22,7 +22,7 @@ function App() {
   axios.get('/feedback').then(response => {
     console.log('response is', response.data)
     dispatch({
-      type:"SET_FEEDBACK",
+      type:"SET_SAVED",
       payload:response.data
     })
     

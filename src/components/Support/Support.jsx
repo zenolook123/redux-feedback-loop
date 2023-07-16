@@ -8,9 +8,9 @@ function Support() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const supportObject = [{
+    const supportObject = {
         support: supportValue
-    }]
+    }
 
     const handleTextChange = (event) => {
         setSupportValue(event.target.value)
@@ -23,7 +23,7 @@ function Support() {
             payload: supportObject
         })
 
-        history.push("/support")
+        history.push("/comments")
     }
 
 

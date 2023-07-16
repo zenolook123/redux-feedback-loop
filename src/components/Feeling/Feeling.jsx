@@ -13,14 +13,14 @@ function Feeling() {
         setFeelingValue(event.target.value)
     }
 
-    const feelingObject = [{
+    const feelingObject = {
         feeling: feelingValue
-    }]
+    }
 
 
     function feelingPush() {
 
-        history.push("/feeling")
+        history.push("/understanding")
 
 
         if (feelingValue >= 0 && feelingValue <= 5 && feelingValue != '')

@@ -2,6 +2,8 @@ import { TextField, Button } from "@mui/material"
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { useState } from "react"
+import Swal from "sweetalert2"
+
 
 function Support() {
     const [supportValue, setSupportValue] = useState("");
@@ -18,12 +20,21 @@ function Support() {
 
     function supportPush() {
 
-        dispatch({
-            type: "SET_SUPPORT_LOCAL",
-            payload: supportObject
-        })
+        if (supportValue != '' && supportValue >= 0 && supportValue <= 5){
+            dispatch({
+                type: "SET_SUPPORT_LOCAL",
+                payload: supportObject
+            })
+            history.push("/comments")
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Incorrect Value Given',
+                text: 'Please, enter a number between 1-5 and try again!',
+            })
+        }
+       
 
-        history.push("/comments")
     }
 
 

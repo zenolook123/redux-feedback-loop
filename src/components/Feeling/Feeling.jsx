@@ -2,6 +2,8 @@ import { TextField, Button } from "@mui/material"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
+import Swal from "sweetalert2"
+
 
 function Feeling() {
     const history = useHistory()
@@ -20,15 +22,20 @@ function Feeling() {
 
     function feelingPush() {
 
-        history.push("/understanding")
-
-
-        if (feelingValue >= 0 && feelingValue <= 5 && feelingValue != '')
+        if (feelingValue !== '' && feelingValue >= 0 && feelingValue <= 5) {
             dispatch({
-                type: "SET_FEELING_LOCAL",
-                payload: feelingObject
-            })
-
+              type: "SET_FEELING_LOCAL",
+              payload: feelingObject
+            });
+            history.push("/understanding")
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Incorrect Value Given',
+              text: 'Please enter a number between 1-5 and try again!',
+            });
+          }
+          
             
     }
 

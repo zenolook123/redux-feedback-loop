@@ -29,6 +29,14 @@ const currentFeeling = (state = {
     if (action.type === 'SUBMIT_LOCAL') {
         return { state }
     }
+    if (action.type === 'EMPTY_CURRENT'){
+        return {
+            feeling: 0,
+            understanding: 0,
+            support: 0,
+            comments: ''
+        }
+    }
     return state
 }
 

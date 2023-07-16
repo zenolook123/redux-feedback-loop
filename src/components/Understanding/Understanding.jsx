@@ -2,7 +2,7 @@ import { TextField, Button } from "@mui/material"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { useState } from "react"
-
+import Swal from "sweetalert2"
 
 function Understanding() {
     
@@ -21,13 +21,20 @@ function Understanding() {
 
 
     function understandingPush() {
-        dispatch({
-            type: 'SET_UNDERSTANDING_LOCAL',
-            payload: understandingObject
-        })
-
-        history.push("/support")
-
+        if (understandingValue !== '' && understandingValue >= 0 && understandingValue <= 5) {
+            dispatch({
+              type: "SET_UNDERSTANDING_LOCAL",
+              payload: understandingObject
+            });
+            history.push("/support");
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Incorrect Value Given',
+              text: 'Please enter a number between 1-5 and try again!',
+            });
+          }
+          
     }
 
 

@@ -2,6 +2,9 @@ import { TextField, Button } from "@mui/material"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Swal from "sweetalert2"
+
+
 function Comments() {
 
 const dispatch = useDispatch()
@@ -18,12 +21,20 @@ const history = useHistory()
 
 
     function commentsPush() {
-        dispatch({
-            type:"SET_COMMENTS_LOCAL",
-            payload: commentsObject
-        })
-
-        history.push("/submit")
+        if (commentsValue !== '') {
+            dispatch({
+              type: "SET_COMMENTS_LOCAL",
+              payload: commentsObject
+            });
+            history.push("/submit");
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Missing Comments',
+              text: 'Please enter your comments and try again!',
+            });
+          }
+          
       }
 
 

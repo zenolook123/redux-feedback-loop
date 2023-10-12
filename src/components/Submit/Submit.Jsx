@@ -11,6 +11,7 @@ function Submit() {
     const handleSubmit = () => {
 
         if (currentFeeling.feeling !== 0 || currentFeeling.understanding !== 0 || currentFeeling.support !== 0 || currentFeeling.comments !== '') {
+            history.push("/")
             Swal.fire({
                 title:'Feedback successfully submitted!',
                 text:'Have a great day!',
@@ -20,7 +21,6 @@ function Submit() {
                 dispatch({
                     type:'EMPTY_CURRENT'
                 })
-                history.push("/")
             }).catch(err => {
                 console.log('error submitting feedback', err)
             })
